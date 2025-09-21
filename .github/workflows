@@ -3,7 +3,7 @@ name: Push to Amazon ECR
 on:
   push:
     branches:
-      - master   # usa master porque en tu captura vi que tu rama se llama master
+      - master   # usa master porque tu rama se llama master
 
 jobs:
   build-and-push:
@@ -36,3 +36,4 @@ jobs:
           docker build -t $IMAGE_NAME .
           docker tag $IMAGE_NAME:latest $ECR_REPOSITORY:latest
           docker push $ECR_REPOSITORY:latest
+
