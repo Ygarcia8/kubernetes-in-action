@@ -28,11 +28,12 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
 
-      # Step 4: Build, Tag y Push de la imagen
-      - name: Build, tag, and push image to Amazon ECR
+      # Step 4: Pull, Tag y Push de la imagen ubuntu
+      - name: Pull, tag, and push ubuntu image to Amazon ECR
         run: |
           IMAGE_NAME=ubuntu
           ECR_REPOSITORY=471112790575.dkr.ecr.us-east-1.amazonaws.com/clo-832-lab3
-          docker build -t $IMAGE_NAME .
+          docker pull $IMAGE_NAME:latest
           docker tag $IMAGE_NAME:latest $ECR_REPOSITORY:latest
           docker push $ECR_REPOSITORY:latest
+
